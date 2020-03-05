@@ -31,4 +31,8 @@ public class UserModel extends BaseModel {
     @Column(name = "union_id_")
     private String unionId;
 
+    @TableField("birthday_")
+    @Column(name = "birthday_")
+    private String birthday;
+
 }

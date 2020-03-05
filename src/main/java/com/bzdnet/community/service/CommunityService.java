@@ -1,8 +1,8 @@
 package com.bzdnet.community.service;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.bzdnet.community.dao.ProductMapper;
-import com.bzdnet.community.model.ProductModel;
+import com.bzdnet.community.dao.CommunityMapper;
+import com.bzdnet.community.model.CommunityModel;
 import org.springframework.stereotype.Service;
 
 /**
@@ -10,5 +10,5 @@ import org.springframework.stereotype.Service;
  * @date 2020/3/4 17:09
  **/
 @Service
-public class ProductService extends ServiceImpl<ProductMapper, ProductModel> {
+public class CommunityService extends ServiceImpl<CommunityMapper, CommunityModel> {
 }
