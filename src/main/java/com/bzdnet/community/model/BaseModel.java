@@ -14,8 +14,8 @@ public class BaseModel {
 
     @TableId(value = "row_id_", type = IdType.INPUT)
     @Id
-    @Column(name = "row_id_")
-    protected String rowId;
+    @Column(name = "row_id_",length = 20)
+    protected Long rowId;
 
 
 }

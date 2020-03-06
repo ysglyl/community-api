@@ -12,7 +12,7 @@ public class MyBatisPlusFillHandler implements MetaObjectHandler {
     public void insertFill(MetaObject metaObject) {
         UserModel user = SessionContextHolder.get();
         if (metaObject.hasSetter("rowId")) {
-            this.setFieldValByName("rowId", String.valueOf(ID.getId()), metaObject);
+            this.setFieldValByName("rowId", ID.getId(), metaObject);
         }
     }
 

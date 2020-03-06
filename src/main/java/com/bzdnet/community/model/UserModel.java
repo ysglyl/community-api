@@ -1,6 +1,7 @@
 package com.bzdnet.community.model;
 
 
+import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
@@ -22,16 +23,22 @@ public class UserModel extends BaseModel {
     @Column(name = "nick_name_")
     private String nickName;
     @TableField("avatar_url_")
-    @Column(name = "avatar_url_")
-    private Integer avatarUrl;
+    @Column(name = "avatar_url_",length = 512)
+    private String avatarUrl;
     @TableField("gender_")
     @Column(name = "gender_")
     private Integer gender;
-    @TableField("union_id_")
-    @Column(name = "union_id_")
-    private String unionId;
+    @TableField("country_")
+    @Column(name = "country_")
+    private String country;
+    @TableField("province_")
+    @Column(name = "province_")
+    private String province;
+    @TableField("city_")
+    @Column(name = "city_")
+    private String city;
 
-    @TableField("birthday_")
+    @TableField(value = "birthday_",fill = FieldFill.INSERT)
     @Column(name = "birthday_")
     private String birthday;
 
