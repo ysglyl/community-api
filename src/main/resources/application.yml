@@ -14,8 +14,8 @@ spring:
     default-property-inclusion: non_null
 logging:
   level:
-    com.bzdnet.sameway.dao: debug
-    com.bzdnet.sameway.mapper: debug
+    com.bzdnet.community.dao: debug
+    com.bzdnet.community.mapper: debug
 mybatis-plus:
   mapper-locations: mapper/**/*.xml
   configuration:

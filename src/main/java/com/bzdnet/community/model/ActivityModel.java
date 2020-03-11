@@ -2,6 +2,7 @@ package com.bzdnet.community.model;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import javax.persistence.Column;
@@ -24,12 +25,15 @@ public class ActivityModel extends BaseModel {
     private String name;
     @TableField("permit_deadline_")
     @Column(name = "permit_deadline_")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
     private Date permitDeadline;
     @TableField("start_time_")
     @Column(name = "start_time_")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
     private Date startTime;
     @TableField("end_time_")
     @Column(name = "end_time_")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
     private Date endTime;
     @TableField("initiator_")
     @Column(name = "initiator_")
@@ -40,9 +44,9 @@ public class ActivityModel extends BaseModel {
     @TableField("type_")
     @Column(name = "type_")
     private Integer type;
-    @TableField("remark_")
-    @Column(name = "remark_")
-    private String remark;
+    @TableField("desc_")
+    @Column(name = "desc_")
+    private String description;
 
     @TableField("community_id_")
     @Column(name = "community_id_")

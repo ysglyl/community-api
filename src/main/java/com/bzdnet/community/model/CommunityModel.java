@@ -22,6 +22,9 @@ public class CommunityModel extends BaseModel {
     @TableField("name_")
     @Column(name = "name_")
     private String name;
+    @TableField("avatar_")
+    @Column(name = "avatar_")
+    private String avatar;
     @TableField("country_")
     @Column(name = "country_")
     private String country;
@@ -37,11 +40,22 @@ public class CommunityModel extends BaseModel {
     @TableField("address_")
     @Column(name = "address_")
     private String address;
+    @TableField("type_")
+    @Column(name = "type_")
+    private String type;
+    @TableField("desc_")
+    @Column(name = "desc_")
+    private String description;
     @TableField("member_count_")
     @Column(name = "member_count_")
     private String memberCount;
     @TableField("cert_member_count_")
     @Column(name = "cert_member_count_")
     private String certMemberCount;
+
+    @TableField(exist = false)
+    private int certRate;
+    @TableField(exist = false)
+    private boolean flagMember;
 
 }
