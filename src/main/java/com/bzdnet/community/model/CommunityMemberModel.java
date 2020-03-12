@@ -6,6 +6,7 @@ import lombok.Data;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import java.util.Date;
 
 /**
  * @author yu.shigui@rongzer.com
@@ -26,14 +27,14 @@ public class CommunityMemberModel extends BaseModel {
 
     @TableField("flag_cert_")
     @Column(name = "flag_cert_")
-    private String flagCert;
+    private Integer flagCert;
 
     @TableField("cert_user_id_")
     @Column(name = "cert_user_id_")
-    private String certUserId;
+    private Long certUserId;
 
     @TableField("cert_time_")
     @Column(name = "cert_time_")
-    private String certTime;
+    private Date certTime;
 
 }

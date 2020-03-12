@@ -1,8 +1,14 @@
 package com.bzdnet.community.interceptor;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.bzdnet.community.exception.UnLoginException;
+import com.bzdnet.community.holder.SessionContextHolder;
+import com.bzdnet.community.model.UserModel;
+import com.bzdnet.community.service.UserService;
 import com.bzdnet.community.util.FuncTool;
 import lombok.Data;
+import org.apache.catalina.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
@@ -16,16 +22,18 @@ import java.util.List;
 @Component
 public class AuthInterceptor extends HandlerInterceptorAdapter {
 
+    @Autowired
+    private UserService userService;
+
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        String uri = request.getRequestURI();
-        String token = request.getHeader("Authorization");
-
-        // 未登录
-        if (FuncTool.isEmptyString(token)) {
-            throw new UnLoginException(0);
+        String openId = request.getHeader("openId");
+        if(FuncTool.isNotEmptyString(openId)) {
+            UserModel user = userService.getOne(new QueryWrapper<UserModel>().eq("open_id_", openId));
+            if(user!= null){
+                SessionContextHolder.set(user);
+            }
         }
-
         return true;
     }
 

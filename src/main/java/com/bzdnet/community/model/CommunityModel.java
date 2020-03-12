@@ -6,6 +6,7 @@ import lombok.Data;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Transient;
 import java.util.Date;
 
 /**
@@ -25,9 +26,6 @@ public class CommunityModel extends BaseModel {
     @TableField("avatar_")
     @Column(name = "avatar_")
     private String avatar;
-    @TableField("country_")
-    @Column(name = "country_")
-    private String country;
     @TableField("province_")
     @Column(name = "province_")
     private String province;
@@ -42,20 +40,22 @@ public class CommunityModel extends BaseModel {
     private String address;
     @TableField("type_")
     @Column(name = "type_")
-    private String type;
+    private int type;
     @TableField("desc_")
     @Column(name = "desc_")
     private String description;
     @TableField("member_count_")
     @Column(name = "member_count_")
-    private String memberCount;
+    private int memberCount;
     @TableField("cert_member_count_")
     @Column(name = "cert_member_count_")
-    private String certMemberCount;
+    private int certMemberCount;
 
     @TableField(exist = false)
+    @Transient
     private int certRate;
     @TableField(exist = false)
+    @Transient
     private boolean flagMember;
 
 }
