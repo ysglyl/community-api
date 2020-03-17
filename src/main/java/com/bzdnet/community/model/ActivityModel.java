@@ -20,6 +20,28 @@ import java.util.Date;
 @TableName("t_activity")
 public class ActivityModel extends BaseModel {
 
+    public enum Type {
+        ALL, NOTICE, TOPIC, VOTE, STATISTICS, PURCHASE, DEMAND;
+
+        public static Type instance(int type) {
+            switch (type) {
+                case 1:
+                    return NOTICE;
+                case 2:
+                    return TOPIC;
+                case 3:
+                    return VOTE;
+                case 4:
+                    return STATISTICS;
+                case 5:
+                    return PURCHASE;
+                case 6:
+                    return DEMAND;
+            }
+            return ALL;
+        }
+    }
+
     @TableField("name_")
     @Column(name = "name_")
     private String name;
