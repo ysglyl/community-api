@@ -7,6 +7,7 @@ import com.bzdnet.community.form.CommunityForm;
 import com.bzdnet.community.holder.SessionContextHolder;
 import com.bzdnet.community.model.CommunityMemberModel;
 import com.bzdnet.community.model.CommunityModel;
+import com.bzdnet.community.model.UserModel;
 import com.bzdnet.community.service.CommunityMemberService;
 import com.bzdnet.community.service.CommunityService;
 import com.bzdnet.community.vo.ResultVO;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.util.Date;
+import java.util.List;
 
 /**
  * 社区 API
@@ -53,8 +55,19 @@ public class CommunityController extends BaseController {
         return success(pageList);
     }
 
+    @PostMapping("/myAllList")
+    public ResultVO myAllList(){
+        UserModel user = SessionContextHolder.get();
+        List<CommunityModel> allList = communityService.userHadJoinAllList(user.getRowId());
+        return success(allList);
+    }
+
     @PostMapping("/insert")
     public ResultVO insert(@RequestBody CommunityModel model) {
+        int exist = communityService.count(new QueryWrapper<CommunityModel>().eq("name_",model.getName()).eq("type_",model.getType()));
+        if(exist > 0) {
+            return fail("名称已被注册！");
+        }
         model.setMemberCount(1);
         model.setCertMemberCount(1);
         model.setCertRate(100);

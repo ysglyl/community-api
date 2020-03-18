@@ -14,13 +14,13 @@ import java.util.Date;
  * @date 2020/3/4 13:57
  **/
 @Data
-@Entity(name = "t_activity_product")
-@TableName("t_activity_product")
-public class ActivityProductModel extends BaseModel {
+@Entity(name = "t_purchase_product")
+@TableName("t_purchase_product")
+public class PurchaseProductModel extends BaseModel {
 
-    @TableField("activity_id_")
-    @Column(name = "activity_id_")
-    private Long activityId;
+    @TableField("purchase_id_")
+    @Column(name = "purchase_id_")
+    private Long purchaseId;
 
     @TableField("product_id_")
     @Column(name = "product_id_")

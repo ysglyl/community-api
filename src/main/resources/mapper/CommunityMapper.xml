@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bzdnet.community.dao.CommunityMapper">
+
+    <select id="userHadJoinAllList" resultType="com.bzdnet.community.model.CommunityModel">
+        select
+        *
+        from t_community c
+        where exists (select row_id_ from t_community_member cm where cm.community_id_=c.row_id_ and cm.user_id_=#{userId})
+    </select>
+
+</mapper>

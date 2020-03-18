@@ -7,7 +7,7 @@ import lombok.Data;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Transient;
-import java.util.Date;
+
 
 /**
  * 社区 数据模型
@@ -57,5 +57,9 @@ public class CommunityModel extends BaseModel {
     @TableField(exist = false)
     @Transient
     private boolean flagMember;
+
+    public int getCertRate() {
+        return this.certMemberCount * 100 / this.memberCount;
+    }
 
 }

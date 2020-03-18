@@ -1,8 +1,8 @@
 package com.bzdnet.community.service;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.bzdnet.community.dao.ActivityProductMapper;
-import com.bzdnet.community.model.ActivityProductModel;
+import com.bzdnet.community.dao.VoteResultMapper;
+import com.bzdnet.community.model.VoteResultModel;
 import org.springframework.stereotype.Service;
 
 /**
@@ -10,5 +10,5 @@ import org.springframework.stereotype.Service;
  * @date 2020/3/4 17:09
  **/
 @Service
-public class ActivityProductService extends ServiceImpl<ActivityProductMapper, ActivityProductModel> {
+public class VoteResultService extends ServiceImpl<VoteResultMapper, VoteResultModel> {
 }

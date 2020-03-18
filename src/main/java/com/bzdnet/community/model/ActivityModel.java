@@ -7,6 +7,7 @@ import lombok.Data;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Transient;
 import java.util.Date;
 
 /**
@@ -41,37 +42,43 @@ public class ActivityModel extends BaseModel {
             return ALL;
         }
     }
-
-    @TableField("name_")
-    @Column(name = "name_")
-    private String name;
-    @TableField("permit_deadline_")
-    @Column(name = "permit_deadline_")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
-    private Date permitDeadline;
-    @TableField("start_time_")
-    @Column(name = "start_time_")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
-    private Date startTime;
-    @TableField("end_time_")
-    @Column(name = "end_time_")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
-    private Date endTime;
+    //发起人
     @TableField("initiator_")
     @Column(name = "initiator_")
     private Long initiator;
+    //当前状态
     @TableField("status_")
     @Column(name = "status_")
     private Integer status;
+    //活动类型
     @TableField("type_")
     @Column(name = "type_")
     private Integer type;
-    @TableField("desc_")
-    @Column(name = "desc_")
-    private String description;
-
+    //所属社区
     @TableField("community_id_")
     @Column(name = "community_id_")
-    private String communityId;
+    private Long communityId;
+
+    @TableField(exist = false)
+    @Transient
+    private String communityName;
+    @TableField(exist = false)
+    @Transient
+    private NoticeModel notice;
+    @TableField(exist = false)
+    @Transient
+    private TopicModel topic;
+    @TableField(exist = false)
+    @Transient
+    private VoteModel vote;
+    @TableField(exist = false)
+    @Transient
+    private StatisticsModel statisticsModel;
+    @TableField(exist = false)
+    @Transient
+    private PurchaseModel purchase;
+    @TableField(exist = false)
+    @Transient
+    private DemandModel demand;
 
 }
