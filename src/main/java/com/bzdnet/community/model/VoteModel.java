@@ -6,6 +6,8 @@ import lombok.Data;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Transient;
+import java.util.List;
 
 /**
  * @author yu.shigui@rongzer.com
@@ -16,12 +18,20 @@ import javax.persistence.Entity;
 @TableName("t_vote")
 public class VoteModel extends BaseModel {
 
-    @TableField("content_")
-    @Column(name = "content_")
-    private String content;
+    @TableField("title_")
+    @Column(name = "title_")
+    private String title;
+
+    @TableField("deadline_")
+    @Column(name = "deadline_")
+    private String deadline;
 
     @TableField("activity_id_")
     @Column(name = "activity_id_")
     private Long activityId;
+
+    @TableField(exist = false)
+    @Transient
+    private List<VoteItemModel> items;
 
 }

@@ -73,7 +73,7 @@ public class ActivityModel extends BaseModel {
     private VoteModel vote;
     @TableField(exist = false)
     @Transient
-    private StatisticsModel statisticsModel;
+    private StatisticsModel statistics;
     @TableField(exist = false)
     @Transient
     private PurchaseModel purchase;

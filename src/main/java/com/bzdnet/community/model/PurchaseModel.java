@@ -6,6 +6,8 @@ import lombok.Data;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Transient;
+import java.util.List;
 
 /**
  * @author yu.shigui@rongzer.com
@@ -35,5 +37,9 @@ public class PurchaseModel extends BaseModel {
     @TableField("remark_")
     @Column(name = "remark_")
     private String remark;
+
+    @TableField(exist = false)
+    @Transient
+    private List<PurchaseProductModel> products;
 
 }

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.stream.Collectors;
 
 /**
  * 活动 API
@@ -75,13 +76,31 @@ public class ActivityController extends BaseController {
             case NOTICE:
                 model.getNotice().setActivityId(model.getRowId());
                 noticeService.save(model.getNotice());
+                break;
             case TOPIC:
                 model.getTopic().setActivityId(model.getRowId());
                 topicService.save(model.getTopic());
+                break;
             case VOTE:
+                model.getVote().setActivityId(model.getRowId());
+                voteService.save(model.getVote());
+                voteItemService.saveBatch(model.getVote().getItems().stream().peek(item -> {
+                    item.setVoteId(model.getVote().getRowId());
+                    item.setNum(0);
+                }).collect(Collectors.toList()));
+                break;
             case STATISTICS:
+                model.getStatistics().setActivityId(model.getRowId());
+                statisticsService.save(model.getStatistics());
+                break;
             case PURCHASE:
+                model.getPurchase().setActivityId(model.getRowId());
+                purchaseService.save(model.getPurchase());
+                purchaseProductService.saveBatch(model.getPurchase().getProducts().stream().peek(item -> item.setPurchaseId(model.getPurchase().getRowId())).collect(Collectors.toList()));
+                break;
             case DEMAND:
+                model.getDemand().setActivityId(model.getRowId());
+                demandService.save(model.getDemand());
                 break;
         }
         return success(model.getRowId());

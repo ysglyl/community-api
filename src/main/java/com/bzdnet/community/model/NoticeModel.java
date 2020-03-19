@@ -18,6 +18,10 @@ import java.util.Date;
 @TableName("t_notice")
 public class NoticeModel extends BaseModel {
 
+    @TableField("title_")
+    @Column(name = "title_")
+    private String title;
+
     @TableField("content_")
     @Column(name = "content_")
     private String content;
