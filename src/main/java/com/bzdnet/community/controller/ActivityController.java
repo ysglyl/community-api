@@ -47,7 +47,7 @@ public class ActivityController extends BaseController {
     private DemandService demandService;
 
     @PostMapping("/loadingList")
-    public ResultVO pageList(@RequestBody ActivityForm form) {
+    public ResultVO loadingList(@RequestBody ActivityForm form) {
         QueryWrapper<ActivityModel> query = new QueryWrapper<>();
         if (form.getType() != 0) {
             query.eq("type_", form.getType());
@@ -105,6 +105,6 @@ public class ActivityController extends BaseController {
         }
         return success(model.getRowId());
     }
-
+    
 }
 

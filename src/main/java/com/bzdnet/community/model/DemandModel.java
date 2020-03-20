@@ -6,6 +6,7 @@ import lombok.Data;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import java.util.Date;
 
 /**
  * @author yu.shigui@rongzer.com
@@ -16,17 +17,17 @@ import javax.persistence.Entity;
 @TableName("t_demand")
 public class DemandModel extends BaseModel {
 
+    @TableField("title_")
+    @Column(name = "title_")
+    private String title;
+
     @TableField("content_")
     @Column(name = "content_")
     private String content;
 
     @TableField("permit_deadline_")
     @Column(name = "permit_deadline_")
-    private Long permitDeadline;
-
-    @TableField("service_time_")
-    @Column(name = "service_time_")
-    private Long serviceTime;
+    private Date permitDeadline;
 
     @TableField("activity_id_")
     @Column(name = "activity_id_")

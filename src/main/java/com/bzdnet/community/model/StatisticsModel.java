@@ -16,6 +16,10 @@ import javax.persistence.Entity;
 @TableName("t_statistics")
 public class StatisticsModel extends BaseModel {
 
+    @TableField("title_")
+    @Column(name = "title_")
+    private String title;
+
     @TableField("content_")
     @Column(name = "content_")
     private String content;
